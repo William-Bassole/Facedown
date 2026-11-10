@@ -4,7 +4,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.util.Log;
 
 public class AccelerometerDetector implements SensorEventListener {
 
@@ -40,12 +39,9 @@ public class AccelerometerDetector implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        float x = event.values[0];
-        float y = event.values[1];
+        
         float z = event.values[2];
-
-        Log.d("Coordinates", "X: " + x + " Y: " + y + " Z: " + z);
-
+        
         boolean newFaceDown = z < -7;
         if (newFaceDown != faceDown) {
             faceDown = newFaceDown;
