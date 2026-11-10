@@ -8,19 +8,28 @@ import android.hardware.SensorManager;
 import android.util.Log;
 
 /**
- * Detects whether something is covering the screen, using the proximity sensor.
+ * Detects whether something is covering the screen, using the proximity sensor,
+ * and notifies a listener each time this state changes.
  */
 public class ProximityDetector implements SensorEventListener {
 
     private static final String TAG = "ProximityDetector";
+
     private SensorManager sensorManager;
     private Sensor proximitySensor;      // null if the phone has no proximity sensor
     private boolean objectNear = false;  // last decision: is the screen covered?
     private float lastDistance = -1;     // last measured distance in cm (-1 = no measure yet)
+    private Listener listener;           // who to notify when the state changes (MainActivity)
 
-    public ProximityDetector(Context context) {
+    // Implemented by whoever wants to be notified (MainActivity)
+    public interface Listener {
+        void onProximityChanged(boolean objectNear);
+    }
+
+    public ProximityDetector(Context context, Listener listener) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+        this.listener = listener;
     }
 
     // True if the phone has a proximity sensor
@@ -39,13 +48,19 @@ public class ProximityDetector implements SensorEventListener {
         sensorManager.unregisterListener(this);
     }
 
-    // Called by Android each time the measured distance changes
+    // Called by Android each time the measured distance changes;
+    // notifies the listener only when near/far actually switches
     @Override
     public void onSensorChanged(SensorEvent event) {
         float distance = event.values[0];
         lastDistance = distance;
+        boolean previousState = objectNear;
         objectNear = isNear(distance);
         Log.d(TAG, "distance = " + distance + " cm, near = " + objectNear);
+
+        if (objectNear != previousState) {
+            listener.onProximityChanged(objectNear);
+        }
     }
 
     // Required by SensorEventListener, not needed here
@@ -58,7 +73,7 @@ public class ProximityDetector implements SensorEventListener {
         return distance < proximitySensor.getMaximumRange();
     }
 
-    // Used by the timer logic: is the screen covered right now?
+    // Current state, if someone needs to ask directly
     public boolean isObjectNear() {
         return objectNear;
     }
