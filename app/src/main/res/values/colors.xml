@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- FaceDown -->
+    <color name="night_blue">#10163F</color>      <!-- screen background -->
+    <color name="surface_blue">#1E2459</color>    <!-- timer bubble edge -->
+    <color name="bubble_blue">#3A4FD8</color>     <!-- timer bubble center -->
+    <color name="aqua_start">#43C6B4</color>      <!-- start button, gradient top -->
+    <color name="aqua_end">#2E9682</color>        <!-- start button, gradient bottom -->
+    <color name="text_primary">#FFFFFF</color>    <!-- main text -->
+    <color name="text_secondary">#9AA0C8</color>  <!-- secondary text -->
+    <color name="danger">#E5677A</color>          <!-- interrupted session -->
 </resources>

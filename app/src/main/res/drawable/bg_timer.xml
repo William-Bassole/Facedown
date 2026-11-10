@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Timer bubble: bright blue center fading to a darker edge -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <gradient
+        android:type="radial"
+        android:gradientRadius="140dp"
+        android:startColor="@color/bubble_blue"
+        android:endColor="@color/surface_blue" />
+    <!-- Thin semi-transparent turquoise outline (first 2 hex digits = opacity) -->
+    <stroke
+        android:width="2dp"
+        android:color="#5543C6B4" />
+</shape>

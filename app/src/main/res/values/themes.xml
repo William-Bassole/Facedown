@@ -1,9 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Facedown" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- White status bar icons on the dark background -->
+        <item name="android:windowLightStatusBar">false</item>
     </style>
-
     <style name="Theme.Facedown" parent="Base.Theme.Facedown" />
 </resources>

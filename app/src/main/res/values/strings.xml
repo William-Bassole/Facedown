@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Facedown</string>
+    <string name="app_name">FaceDown</string>
+    <string name="subtitle">Put your phone down and focus</string>
+    <string name="status_ready">Tap Start, then turn your phone face down</string>
+    <string name="status_running">Focus session in progress</string>
+    <string name="status_broken">Session interrupted</string>
+    <string name="start_session">Start session</string>
 </resources>
