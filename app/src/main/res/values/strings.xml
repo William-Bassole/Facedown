@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">FaceDown</string>
     <string name="subtitle">Put your phone down and focus</string>
-    <string name="timer_default">00:00</string>
     <string name="status_ready">Tap Start, then turn your phone face down</string>
     <string name="status_running">Focus session in progress</string>
     <string name="status_broken">Session interrupted</string>
