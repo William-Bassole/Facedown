@@ -1,43 +1,56 @@
 # FaceDown
 
-A study timer for Android that only runs while your phone is lying face down on the table. Pick the phone up and the session is interrupted.
+FaceDown is an Android study timer that runs while the phone is placed face down on a surface. If the phone is picked up or turned over, the timer pauses.
 
-Built for the course *Séminaire de langages de programmation* (University of Geneva, 2026).
+This application was developed for the course *Séminaire de langages de programmation* at the University of Geneva.
 
 ## How it works
 
-FaceDown combines two sensors to make sure the phone is really put down:
+FaceDown uses two sensors:
 
-- **Accelerometer**: checks that the phone is lying flat, screen facing down, and not moving.
-- **Proximity sensor**: checks that the screen is actually against a surface.
+- **Accelerometer**: checks whether the screen is facing down using the Z axis.
+- **Proximity sensor**: checks whether an object or surface is close to the screen.
 
-The timer starts when both conditions are met, stops as soon as one of them changes, and resumes when everything is back in place.
+The timer runs only when both conditions are true. If one of them becomes false, the timer pauses and keeps the elapsed time. It resumes when both conditions become true again.
 
 ## Features
 
-- Focus timer based on a Chronometer
-- Live status message (ready, in progress, interrupted)
-- Works without a proximity sensor (the app falls back to the accelerometer only)
-- Calm night blue and turquoise interface, inspired by breathing apps
+- Manual start and end of a focus session
+- Face-down detection using the accelerometer
+- Surface detection using the proximity sensor
+- Timer with pause and resume
+- Live session status
+- Simple dark interface
 
 ## Project structure
 
 | File | Role |
-| `MainActivity.java` | Session logic: connects both sensors to the screen |
-| `AccelerometerDetector.java` | Detects when the phone is face down and still |
-| `ProximityDetector.java` | Detects when the screen is covered and notifies MainActivity on each change |
-| `res/layout/activity_main.xml` | Home screen layout |
-| `res/values/`, `res/drawable/` | Colors, texts, timer bubble and button shapes |
+| --- | --- |
+| `MainActivity.java` | Manages the session, timer, sensors and interface |
+| `AccelerometerDetector.java` | Detects whether the phone is facing down |
+| `ProximityDetector.java` | Detects whether an object is close to the screen |
+| `res/layout/activity_main.xml` | Defines the main screen |
+| `res/values/` | Contains the texts, colors and themes |
+| `res/drawable/` | Contains the timer and button backgrounds |
 
-## Run it
+## Requirements
+
+- Android Studio
+- Android SDK
+- Android 8.0 or later
+- A device with an accelerometer and a proximity sensor
+
+## Run the application
 
 1. Open the project in Android Studio.
-2. Run it on a device or an emulator (Android Studio's virtual sensors can simulate both sensors).
-3. Or install the APK directly on an Android phone.
+2. Connect an Android phone.
+3. Select the phone as the target device.
+4. Run the application.
+5. Press **Start session** and place the phone face down on a surface.
 
 ## Authors
 
-- [William-Bassole](https://github.com/William-Bassole): proximity sensor and user interface
-- [JahidAbdel](https://github.com/JahidAbdel): accelerometer and session logic
+- [William Bassolé](https://github.com/William-Bassole): proximity sensor and user interface
+- [Abdel Jahid](https://github.com/JahidAbdel): accelerometer and session logic
 
-Built with Java, XML and Android Studio. Developed in parallel on feature branches and merged through pull requests.
+Developed in Java and XML using Android Studio.
